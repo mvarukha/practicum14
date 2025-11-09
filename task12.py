@@ -25,13 +25,17 @@ def main() -> None:
             print("Ввод должен содержать только строчные буквы.")
             return
 
-    all_holes = sum(count_holes(word) for word in words)
-    all_no_holes = sum(len(word) - count_holes(word) for word in words)
+    word_holes = {word: count_holes(word) for word in words}
+
+    all_holes = sum(word_holes[word] for word in words)
+    all_no_holes = sum(len(word) - word_holes[word] for word in words)
     print(all_holes, all_no_holes)
 
-    for word in words:
-        if count_holes(word) >= 2:
-            print(word)
+    words_with_two_or_more_holes = [
+        word for word in words if word_holes[word] >= 2
+    ]
+
+    print(words_with_two_or_more_holes)
 
 
 if __name__ == "__main__":
