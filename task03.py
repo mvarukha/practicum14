@@ -5,7 +5,7 @@ def main() -> None:
     """
     punct = ".,!?;:-()[]{}'\"...«»"
     result = [
-        word.strip(punct)
+        ''.join(char for char in word if char not in punct)
         for word in input().split()
     ]
     print(result)
