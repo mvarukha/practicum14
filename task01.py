@@ -4,7 +4,7 @@ def main() -> None:
     из сумм соседних элементов и выводит его.
     """
     input_numbers = [int(input()) for _ in range(10)]
-    print([input_numbers[ind] + input_numbers[ind + 1] for ind in range(9)])
+    print([input_numbers[ind] + input_numbers[ind + 1] for ind in range(8)])
 
 
 if __name__ == "__main__":
