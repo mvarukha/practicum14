@@ -22,15 +22,20 @@ def main() -> None:
 
     word_order = []
     word_count = {}
+    word_index = {}  # Сохраняем индекс первого появления.
+    index_counter = 0
+
     for word in cleaned_words:
         if word not in word_count:
             word_order.append(word)
             word_count[word] = 0
+            word_index[word] = index_counter
+            index_counter += 1
         word_count[word] += 1
 
     sorted_words = sorted(
         word_order,
-        key=lambda word: (-word_count[word], word_order.index(word))
+        key=lambda word: (-word_count[word], word_index[word])
     )
 
     for word in sorted_words:
