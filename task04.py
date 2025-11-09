@@ -4,14 +4,13 @@ def main() -> None:
     слов без знаков препинания и выводит его.
     """
     punct = ".,!?;:-()[]{}'\"...«»"
-    words = [word.strip(punct) for word in input().split()]
-    seen_words = set()
-    unique_list = []
-    for word in words:
-        if word and word not in seen_words:
-            unique_list.append(word)
-            seen_words.add(word)
-    print(unique_list)
+    words = [
+        ''.join(char for char in word if char not in punct)
+        for word in input().split()
+    ]
+    # Убираем пустые строки и сохраняем порядок.
+    unique_words = list(dict.fromkeys(word for word in words if word))
+    print(unique_words)
 
 
 if __name__ == "__main__":
